@@ -1,14 +1,38 @@
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        contaBancaria conta1 = new contaBancaria("12345", "João Silva", 1000);
-        contaBancaria conta2 = new contaBancaria("67890", "Maria Souza", 500);
+        System.out.println("BEM-VINDO AO BANCO DIGITAL \n");
 
-        conta1.transferir(conta2, 300);
+        // Coletar dados do usuário
+        System.out.println("Por favor, digite o número da Agência: ");
+        String agencia = scanner.nextLine();
 
-        conta1.exibirSaldo();
-        conta2.exibirSaldo();
+        System.out.println("Por favor, digite o número da Conta: ");
+        int numeroConta = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Por favor, digite o nome do Cliente: ");
+        String titular = scanner.nextLine();
+
+        System.out.println("Deseja fazer um depósito inicial? (S/N): ");
+        String opcaoDeposito = scanner.nextLine();
+
+        contaBancaria conta;
+
+        if (opcaoDeposito.equals("S")) {
+            System.out.println("Digite o valor do depósito inicial: R$");
+            double depositoInicial = scanner.nextDouble();
+            conta = new contaBancaria(numeroConta, agencia, titular, depositoInicial);
+        } else {
+            conta = new contaBancaria(numeroConta, agencia, titular);
+        }
+
+        System.out.println("\n" + conta.getMensagemBoaVindas());
+
     }
 }

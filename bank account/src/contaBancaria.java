@@ -1,45 +1,70 @@
 import java.sql.SQLOutput;
 
 public class contaBancaria {
-    private String numeroConta;
+    private int numeroConta;
+    private String agencia;
     private String titular;
     private double saldo;
+    private double depositoInicial;
 
-    public contaBancaria(String numeroConta, String titular, double saldoInicial) {
+    public contaBancaria(int numeroConta, String agencia, String titular) {
         this.numeroConta = numeroConta;
+        this.agencia = agencia;
         this.titular = titular;
-        this.saldo = saldoInicial;
+        this.saldo = 237.48;
     }
 
-    public void depositar (double valor) {
+    public contaBancaria(int numeroConta, String agencia, String titular, double depositoInicial){
+        this.numeroConta = numeroConta;
+        this.agencia = agencia;
+        this.titular = titular;
+        this.saldo = depositoInicial;
+    }
+
+    public void depositar(double valor) {
         if (valor > 0) {
-            saldo += valor;
-            System.out.println("Deposito de R$" + valor + " realizado com sucesso.");
+            depositoInicial += valor;
+            System.out.println("Depósito de R$" + valor + " realizado. Novo saldo: R$" + saldo);
         } else {
-            System.out.println("Valor insuficiente ou valor inválido para saque.");
+            System.out.println("Saldo insuficiente ou valor inválido.");
         }
     }
 
-    public void sacar (double valor) {
+    public void sacar(double valor) {
         if (valor > 0 && saldo >= valor) {
             saldo -= valor;
-            System.out.println("Saque de R$" + valor + " realizado com sucesso.");
+            System.out.println("Saque de R$" + valor + " realizado. Novo saldo: R$" + saldo);
         } else {
-            System.out.println("Saldo insuficiente ou valor inválido para saque.");
+            System.out.println("Saldo insuficiente ou valor inválido.");
         }
     }
 
-    public void exibirSaldo() {
-        System.out.println("Saldo atual: R$" + saldo);
+    public int getNumeroConta() {
+        return numeroConta;
     }
 
-    public void transferir(contaBancaria destino, double valor) {
-        if (valor > 0 && saldo >- valor) {
-            this.saldo -= valor;
-            destino.saldo += valor;
-            System.out.println("Transferência de R$" + valor + " para " + destino + " relizada com sucesso.");
-        } else {
-            System.out.println("Saldo insuficiente ou valor inválido para trasferência.");
-        }
+    public String getAgencia() {
+        return agencia;
     }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public double getDepositoInicial() {
+        return depositoInicial;
+    }
+
+    public String getMensagemBoaVindas(){
+        return "Olá " + titular +
+                ", obrigado por criar uma conta em nosso banco \n" +
+                "Agência: " + agencia +
+                " | Conta: " + numeroConta +
+                " | Saldo: R$" + saldo;
+    }
+
 }
