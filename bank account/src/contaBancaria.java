@@ -23,7 +23,7 @@ public class contaBancaria {
 
     public void depositar(double valor) {
         if (valor > 0) {
-            depositoInicial += valor;
+            saldo += valor;
             System.out.println("Depósito de R$" + valor + " realizado. Novo saldo: R$" + saldo);
         } else {
             System.out.println("Saldo insuficiente ou valor inválido.");
