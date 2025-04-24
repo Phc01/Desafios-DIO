@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CarrinhoCompras {
 
-    private List<Item> itemList;
+    private final List<Item> itemList;
 
     public CarrinhoCompras() {
         this.itemList = new ArrayList<>();

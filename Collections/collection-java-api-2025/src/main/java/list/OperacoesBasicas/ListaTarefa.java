@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ListaTarefa {
 
-    private List<Tarefa> tarefaList;
+    private final List<Tarefa> tarefaList;
 
     public ListaTarefa() {
         this.tarefaList = new ArrayList<>();
